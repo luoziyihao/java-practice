@@ -41,6 +41,7 @@
 	<modules>
 		<module>java-function</module>
 		<module>java-design-patterns</module>
+		<module>empty-model</module>
     </modules>
 
     <dependencies>
