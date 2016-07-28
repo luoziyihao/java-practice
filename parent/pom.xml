@@ -16,6 +16,7 @@
 	<modules>
 		<module>../java-function</module>
 		<module>../java-design-patterns</module>
+        <module>../java-data-structure</module>
 		<module>../empty-model</module>
     </modules>
 
