@@ -17,6 +17,7 @@
 		<module>../java-function</module>
 		<module>../java-design-patterns</module>
         <module>../java-data-structure</module>
+        <module>../rxjava</module>
 		<module>../empty-model</module>
     </modules>
 
