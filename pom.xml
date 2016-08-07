@@ -685,6 +685,19 @@
             <version>${javax.inject.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons-dbcp.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -750,6 +763,9 @@
 
         <javax.inject.version>1</javax.inject.version>
 
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+
+        <hsqldb.version>2.3.1</hsqldb.version>
     </properties>
 
 </project>
