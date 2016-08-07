@@ -1,4 +1,4 @@
-package com.luozi.log.spring.holder;
+package com.luozi.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
