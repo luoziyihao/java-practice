@@ -5,7 +5,7 @@ package com.luozi.log;
  */
 public class LogUtils {
 
-    private static final Logger LOGGER = Logger.getLoggerInstance(LogUtils.class);
+    private static final Logger LOGGER = new Logger("common_info");
 
     public static Logger getLOGGER() {
         return LOGGER;

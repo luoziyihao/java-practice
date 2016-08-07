@@ -6,17 +6,17 @@ import org.slf4j.LoggerFactory;
 
 public class Logger {
 
-	private org.slf4j.Logger logger;
+	private final org.slf4j.Logger logger;
 
 
 
-	private Logger(Class<?> clazz) {
+	public Logger(Class<?> clazz) {
 			logger = LoggerFactory.getLogger(clazz);
 	}
 
 
-	public static Logger getLoggerInstance(Class<?> clazz) {
-		return new Logger(clazz);
+	public Logger(String name) {
+		logger = LoggerFactory.getLogger(name);
 	}
 
 
