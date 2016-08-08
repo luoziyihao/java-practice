@@ -1,53 +1,24 @@
 package com.luozi.log;
 
 
-import java.io.File;
-
-import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.LoggerFactory;
 
 
 public class Logger {
-	
-	private org.apache.log4j.Logger logger;
 
-	private Logger(Class<?> clazz) {
-			logger = org.apache.log4j.Logger.getLogger(clazz);
-	}
-	
-	private Logger(org.apache.log4j.Logger _logger)
-	{
-		logger = _logger;
-	}
-	
-	public static void initialize()  {
-		
+	private final org.slf4j.Logger logger;
+
+
+
+	public Logger(Class<?> clazz) {
+			logger = LoggerFactory.getLogger(clazz);
 	}
 
-	public static Logger getLoggerInstance(Class<?> clazz) {
-		return new Logger(clazz);
+
+	public Logger(String name) {
+		logger = LoggerFactory.getLogger(name);
 	}
-	
-	public static Logger getLoggerInstance(org.apache.log4j.Logger _logger){
-		return new Logger(_logger);
-	}
-	
-	
-	/**
-	 * 指定log4j加载配置文件的路径
-	 * @param relativepath
-	 * @return
-	 */
-	public static boolean SetPropertiesPath(String relativepath){
-		String abpath =System.getProperty("user.dir")+File.separatorChar + relativepath;
-		if(! new File(abpath).isFile()){
-			return false;
-		}
-		
-        PropertyConfigurator.configure(abpath); 
-        //定期刷新
-        PropertyConfigurator.configureAndWatch(abpath,5000);
-        return true;
-	}
+
 
 	private static String ParamsToStr(Object... params){
 		StringBuffer sb = new StringBuffer(128);
@@ -64,7 +35,7 @@ public class Logger {
 	 * 这个级别会打印所有的异常栈，不要记录一些常见的无关紧要的异常，比如网络断开，字符串数字转换错误等
 	 */
 	public void error(Object message) {
-		logger.error(message,null);
+		logger.error(message.toString());
 	}
 	
 	/**
@@ -82,7 +53,7 @@ public class Logger {
 	 * 此级别会打印所有的异常栈，不要记录一些常见的无关紧要的异常，比如网络断开，字符串数字转换错误等
 	 */
 	public void error(Throwable t) {
-		logger.error(t);
+		logger.error(t.toString() ,t);
 	}
 	/**
 	 * ERROR级别主要用来记录没有预料到的异常，和业务处理中出现错误的返回值，会影响程序运行的异常错误
@@ -90,7 +61,7 @@ public class Logger {
 	 * 此级别会打印所有的异常栈，不要记录一些常见的无关紧要的异常，比如网络断开，字符串数字转换错误等
 	 */
 	public void error(Object message,Throwable t){
-		logger.error(message, t);
+		logger.error(message.toString(), t);
 	}
 	
 	/**
@@ -131,7 +102,7 @@ public class Logger {
 	 */
 	public void info(Object message,Throwable t) {
 		if(logger.isInfoEnabled())
-			logger.info(message, t);
+			logger.info(message.toString(), t);
 	}
 	
 	/**
@@ -154,16 +125,12 @@ public class Logger {
 	}
 	
 	public void warn(Object message,Throwable t) {
-		logger.warn(message, t);
+		logger.warn(message.toString(), t);
 	}
 	
 	public void warn(Throwable t) {
 		this.warn("", t);
 	} 
-	
-	final org.apache.log4j.Logger getLog(){
-		return logger;
-	}
 	
 	/**
 	 * DEBUG级别一般来记录帮助调试的信息，输入的参数，变量，返回值，或者不太重要的异常
@@ -189,7 +156,7 @@ public class Logger {
 	 */
 	public void debug(Object message,Throwable t) {
 		if(logger.isDebugEnabled())
-			logger.debug(message, t);
+			logger.debug(message.toString(), t);
 	}
 	
 	/**
