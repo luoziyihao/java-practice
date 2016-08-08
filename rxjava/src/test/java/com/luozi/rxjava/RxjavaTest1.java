@@ -34,7 +34,7 @@ public class RxjavaTest1 {
             public void onCompleted() {
                 info("i am complete");
             }
-
+    
             @Override
             public void onError(Throwable e) {
 
