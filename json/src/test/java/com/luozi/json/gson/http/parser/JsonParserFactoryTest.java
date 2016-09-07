@@ -11,6 +11,7 @@ import com.luozi.json.gson.model.Model2_List;
 import com.luozi.json.gson.model.Model3_User;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Map;
  */
 public class JsonParserFactoryTest {
 
-    private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private String Model1_Map_str;
 
@@ -135,7 +136,7 @@ public class JsonParserFactoryTest {
      * @throws Exception
      */
     @Test
-    public void testParseBaseMode2l() throws Exception {
+    public void testParseBaseModel2() throws Exception {
         IResultDataParser<Model1_Map> model1_mapIResultDataParser = JsonParserFactory.parseBaseModel(new TypeToken<Model1_Map>(){}.getType());
         Model1_Map model1_map = model1_mapIResultDataParser.parse(Model1_Map_str);
         infoNew(model1_map);
