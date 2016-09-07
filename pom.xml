@@ -10,7 +10,6 @@
     <modules>
         <module>parent</module>
         <module>common</module>
-        <module>es-common</module>
     </modules>
 
     <build>
@@ -635,27 +634,27 @@
         </dependency>
 
         <!-- jcaptcha 验证码 -->
-        <dependency>
-            <groupId>com.octo.captcha</groupId>
-            <artifactId>jcaptcha-api</artifactId>
-            <version>${jcaptcha.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.octo.captcha</groupId>
-            <artifactId>jcaptcha</artifactId>
-            <version>${jcaptcha.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.octo.captcha</groupId>
-            <artifactId>jcaptcha-integration-simple-servlet</artifactId>
-            <version>${jcaptcha.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>servlet-api</artifactId>
-                    <groupId>javax.servlet</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.octo.captcha</groupId>-->
+            <!--<artifactId>jcaptcha-api</artifactId>-->
+            <!--<version>${jcaptcha.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.octo.captcha</groupId>-->
+            <!--<artifactId>jcaptcha</artifactId>-->
+            <!--<version>${jcaptcha.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.octo.captcha</groupId>-->
+            <!--<artifactId>jcaptcha-integration-simple-servlet</artifactId>-->
+            <!--<version>${jcaptcha.version}</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>servlet-api</artifactId>-->
+                    <!--<groupId>javax.servlet</groupId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
 
         <!-- html处理jar包 -->
         <dependency>
@@ -696,6 +695,12 @@
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
 
     </dependencies>
@@ -766,6 +771,8 @@
         <commons-dbcp.version>1.4</commons-dbcp.version>
 
         <hsqldb.version>2.3.1</hsqldb.version>
+
+        <gson.version>2.7</gson.version>
     </properties>
 
 </project>

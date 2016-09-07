@@ -1,10 +1,9 @@
 package com.luozi.springdatajpa.domain;
 
-import com.sishuok.es.common.entity.BaseEntity;
+
+import com.luozi.entity.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  * Created by luoziyihao on 8/7/16.
