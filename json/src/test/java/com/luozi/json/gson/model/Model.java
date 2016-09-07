@@ -1,14 +1,16 @@
-package com.luozi.json.domain;
+package com.luozi.json.gson.model;
 
+
+import com.luozi.json.entity.AbstractBaseModel;
 
 /**
  * Created by luoziyihao on 8/7/16.
  */
 
-public class Model1<T> extends AbstractBaseModel {
+public class Model<T> extends AbstractBaseModel {
 
-    int code ;
-    String msg;
+    private int code ;
+    private String msg;
 
     private T items;
 
@@ -40,7 +42,7 @@ public class Model1<T> extends AbstractBaseModel {
 
     @Override
     public String toString() {
-        return "Model1{" +
+        return "Model{" +
                 "code=" + code +
                 ", msg='" + msg + '\'' +
                 ", items=" + items +
