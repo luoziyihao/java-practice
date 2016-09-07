@@ -1,12 +1,16 @@
 package com.luozi.designpatterns.command.simple;
 
-import static com.luozi.log.LogUtils.info;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Created by luoziyihao on 7/20/16.
  */
 public class Command {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Command.class);
+
     public static final void test() {
-        info("uaoa");
+        LOGGER.info("uaoa");
     }
 }
