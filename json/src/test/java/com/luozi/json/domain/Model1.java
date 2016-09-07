@@ -1,12 +1,6 @@
 package com.luozi.json.domain;
 
 
-import com.luozi.entity.BaseEntity;
-import com.luozi.json.domain.AbstractBaseModel;
-
-import javax.persistence.Entity;
-import java.util.List;
-
 /**
  * Created by luoziyihao on 8/7/16.
  */

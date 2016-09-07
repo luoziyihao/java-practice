@@ -1,7 +1,6 @@
 package com.luozi.json.domain;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by luoziyihao on 9/7/16.
