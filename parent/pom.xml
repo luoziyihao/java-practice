@@ -20,6 +20,7 @@
         <module>../rxjava</module>
         <module>../spring-practice</module>
         <module>../spring-data-jpa</module>
+		<module>../json</module>
 		<module>../empty-model</module>
     </modules>
 
