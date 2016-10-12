@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
-import com.luozi.json.domain.AbstractBaseModel;
+import com.luozi.json.entity.AbstractBaseModel;
 import com.luozi.json.gson.http.ServerErrorCode;
 import com.luozi.json.gson.http.exception.HttpClientApiException;
 
@@ -101,7 +101,7 @@ public class JsonParserFactory {
 
     /**
      * 解析基本数据类型
-     *
+     * 支持泛型
      * @param type
      * @return
      */

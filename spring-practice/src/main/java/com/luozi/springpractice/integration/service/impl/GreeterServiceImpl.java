@@ -2,6 +2,8 @@ package com.luozi.springpractice.integration.service.impl;
 
 import com.luozi.springpractice.integration.service.GreeterService;
 import com.luozi.springpractice.integration.service.HelloService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -9,14 +11,13 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import static com.luozi.log.LogUtils.debug;
-import static com.luozi.log.LogUtils.info;
-
 /**
  * Created by luoziyihao on 8/6/16.
  */
 @Service
 public class GreeterServiceImpl implements GreeterService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Inject
     @Named("helloWorldChannel")
@@ -32,6 +33,6 @@ public class GreeterServiceImpl implements GreeterService {
 
     @Override
     public void greet2(String name) {
-        debug(helloWorldGateway.getHelloMessage(name));
+        logger.info(helloWorldGateway.getHelloMessage(name));
     }
 }

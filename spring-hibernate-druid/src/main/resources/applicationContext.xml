@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ========================= config ========================= -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 数据库连接池 -->
+    <bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
+        <property name="statementExecutableSqlLogEnable" value="true" />
+    </bean>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 属性类型是字符串，通过别名的方式配置扩展插件 -->
+        <!-- 常用的插件有：
+            监控统计用的filter:stat
+            日志用的filter:log4j
+            防御sql注入的filter:wall -->
+        <!--<property name="filters" value="stat" />-->
+        <property name="proxyFilters">
+            <list>
+                <ref bean="log-filter"/>
+            </list>
+        </property>
+
+        <!-- 最大连接数 -->
+        <property name="maxActive" value="${jdbc.maxconnectionsize}" />
+        <!-- 初始化连接数 -->
+        <property name="initialSize" value="${jdbc.initialPoolSize}" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="${jdbc.minIdle}" />
+
+        <!-- 获取连接的最大等待时间 -->
+        <property name="maxWait" value="${jdbc.maxWait}" />
+        <!-- 两次检测空闲链接数之间的时间差 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+        <!-- 空闲链接的最小空闲阈值, 超过该时间该连接被回收 -->
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+        <!-- 执行sql前检查sql, 连接的有效性. 如果为null， 则下面的开启test*不生效 -->
+        <property name="validationQuery" value="SELECT 'x'" />
+        <!-- 在连接的空闲时间超过timeBetweenEvictionRunsMillis(两次检测空闲连接之间的时间差)时, 检查连接是否有效 -->
+        <property name="testWhileIdle" value="true" />
+        <!-- 使用连接时检查连接是否有效 -->
+        <property name="testOnBorrow" value="true" />
+        <!-- 将连接归还连接池的时候检查连接是否有效 -->
+        <property name="testOnReturn" value="false" />
+        <!-- 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。
+            在mysql5.5以下的版本中没有PSCache功能，建议关闭掉。5.5及以上版本有PSCache，建议开启 -->
+        <property name="poolPreparedStatements" value="true" />
+        <!-- preparedStatement缓存个数 -->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+    </bean>
+
+
+    <!-- hibernate 需要的信息 -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- 扫描映射文件，实体类 -->
+        <property name="packagesToScan">
+            <list>
+                <!-- 这里，com..entity 是否可以匹配所有com开头，entity 结尾 下所有的实体！？ -->
+                <value>com.luozi.**.entity</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.query.substitutions">${hibernate.query.substitutions}</prop>
+                <prop key="hibernate.default_batch_fetch_size">${hibernate.default_batch_fetch_size}</prop>
+                <prop key="hibernate.max_fetch_depth">${hibernate.max_fetch_depth}</prop>
+                <prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+                <prop key="hibernate.bytecode.use_reflection_optimizer">${hibernate.bytecode.use_reflection_optimizer}</prop>
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+                <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+                <prop key="hibernate.cache.use_structured_entries">${hibernate.cache.use_structured_entries}</prop>
+                <!-- <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> -->
+                <!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+                <!-- <prop key="net.sf.ehcache.configurationResourceName">${net.sf.ehcache.configurationResourceName}</prop> -->
+            </props>
+        </property>
+    </bean>
+
+    <!-- hibernate 事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <context:component-scan base-package="com.luozi">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+
+</beans>

@@ -1,4 +1,4 @@
-package com.luozi.json.domain;
+package com.luozi.json.entity;
 
 /**
  * Created by luoziyihao on 9/7/16.
