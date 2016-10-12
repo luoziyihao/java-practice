@@ -1,6 +1,7 @@
-package com.luozi.dao;
+package com.luozi.shd.dao;
 
-import com.luozi.entity.User;
+import com.luozi.common.dao.AbstractHibernateDao;
+import com.luozi.shd.entity.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -8,4 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserDao extends AbstractHibernateDao<User, Long> {
+
 }

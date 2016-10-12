@@ -1,7 +1,7 @@
-package com.luozi.service;
+package com.luozi.common.service;
 
-import com.luozi.dao.AbstractHibernateDao;
-import com.luozi.entity.AbstractEntity;
+import com.luozi.common.dao.AbstractHibernateDao;
+import com.luozi.common.entity.AbstractEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

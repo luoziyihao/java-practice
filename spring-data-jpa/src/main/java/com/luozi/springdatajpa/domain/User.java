@@ -1,7 +1,7 @@
 package com.luozi.springdatajpa.domain;
 
 
-import com.luozi.entity.BaseEntity;
+import com.luozi.common.entity.BaseEntity;
 
 import javax.persistence.Entity;
 

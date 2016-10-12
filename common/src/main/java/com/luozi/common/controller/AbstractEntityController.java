@@ -1,20 +1,20 @@
-package com.luozi.controller;
+package com.luozi.common.controller;
 
-import com.luozi.entity.AbstractEntity;
-import com.luozi.service.AbstractEntityService;
-import com.luozi.vo.Response;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.luozi.common.entity.AbstractEntity;
+import com.luozi.common.service.AbstractEntityService;
+import com.luozi.common.vo.Response;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.io.Serializable;
 
 /**
  * Created by luoziyihao on 10/12/16.
  */
 
-public class AbstractEntityController <M extends AbstractEntity, ID extends Serializable>{
+public abstract class AbstractEntityController <M extends AbstractEntity, ID extends Serializable>{
 
-    @Autowired
+    @Inject
     private AbstractEntityService<M, ID> abstractEntityService;
 
     public AbstractEntityService<M, ID> getAbstractEntityService() {
@@ -22,7 +22,7 @@ public class AbstractEntityController <M extends AbstractEntity, ID extends Seri
     }
 
 
-    @RequestMapping(value = "/${id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public  @ResponseBody Response findOne(@PathVariable(value = "id") ID id){
 //        return new Response().success(getAbstractEntityService().findOne(id));
         return new Response().failure();

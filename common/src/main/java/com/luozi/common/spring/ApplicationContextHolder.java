@@ -1,4 +1,4 @@
-package com.luozi.spring;
+package com.luozi.common.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

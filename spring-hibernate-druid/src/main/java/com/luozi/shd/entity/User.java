@@ -1,6 +1,7 @@
-package com.luozi.entity;
+package com.luozi.shd.entity;
 
 
+import com.luozi.common.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @Entity
-public class User extends BaseEntity<Long>{
+public class User extends BaseEntity<Long> {
     private String name;
     private Integer age;
 }

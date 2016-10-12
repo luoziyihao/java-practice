@@ -1,7 +1,5 @@
 package com.luozi.json.entity;
 
-import com.luozi.entity.BaseEntity;
-
 /**
  * Created by luoziyihao on 9/7/16.
  */

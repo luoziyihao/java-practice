@@ -1,6 +1,7 @@
-package com.luozi.controller;
+package com.luozi.shd.controller;
 
-import com.luozi.entity.User;
+import com.luozi.common.controller.AbstractEntityController;
+import com.luozi.shd.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController extends AbstractEntityController<User, Long>{
+public class UserController extends AbstractEntityController<User, Long> {
 }

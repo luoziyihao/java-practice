@@ -1,13 +1,11 @@
-package com.luozi.dao;
+package com.luozi.common.dao;
 
-import com.luozi.entity.AbstractEntity;
-import com.luozi.entity.BaseEntity;
+import com.luozi.common.entity.AbstractEntity;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.io.PushbackInputStream;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
