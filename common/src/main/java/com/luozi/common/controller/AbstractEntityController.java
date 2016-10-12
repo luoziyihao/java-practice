@@ -23,7 +23,7 @@ public abstract class AbstractEntityController <M extends AbstractEntity, ID ext
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public  @ResponseBody Response findOne(@PathVariable(value = "id") ID id){
+    public Response findOne(@PathVariable(value = "id") ID id){
 //        return new Response().success(getAbstractEntityService().findOne(id));
         return new Response().failure();
     }
