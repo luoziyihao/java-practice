@@ -27,7 +27,7 @@ public abstract class AbstractHibernateDao<T extends AbstractEntity, ID extends 
     }
 
     @SuppressWarnings("unchecked")
-    public T get(ID id) {
+    public T findOne(ID id) {
         return (T)currentSession().get(this.entityClass, id);
     }
 }

@@ -10,4 +10,10 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
+    <packaging>war</packaging>
+
+    <build>
+        <finalName>spring-hibernate-druid</finalName>
+    </build>
+
 </project>

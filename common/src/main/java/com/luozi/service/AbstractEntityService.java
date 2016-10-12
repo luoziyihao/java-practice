@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by luoziyihao on 10/11/16.
  */
-public abstract class AbstractEntityService <T extends AbstractEntity, ID extends java.io.Serializable> {
+public abstract class AbstractEntityService <M extends AbstractEntity, ID extends java.io.Serializable> {
 
     @Autowired
-    private AbstractHibernateDao<T, ID> hibernateDao;
+    private AbstractHibernateDao<M, ID> hibernateDao;
 
-    public AbstractHibernateDao<T, ID> getHibernateDao() {
+    public AbstractHibernateDao<M, ID> getHibernateDao() {
         return hibernateDao;
     }
 
-    public T save(T t) {
-        this.hibernateDao.save(t);
-        return t;
+    public M save(M m) {
+        this.hibernateDao.save(m);
+        return m;
     }
 
-    public T get(ID id) {
-        return this.hibernateDao.get(id);
+    public M findOne(ID id) {
+        return this.hibernateDao.findOne(id);
     }
 }
