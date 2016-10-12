@@ -11,4 +11,20 @@
     <context:component-scan base-package="com.luozi.shd.**.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
+    <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+    <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+        <!--<property name="serializerFeature">-->
+        <!--这个地方加上这个功能吧，能自己配置一些东西，比如时间的格式化，null输出""等等-->
+        <!--</property>-->
+    </bean>
+
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/*.html" location="/WEB-INF/static/"/>
+    <!-- 不使用视图, 使用纯 webapp -->
 </beans>
