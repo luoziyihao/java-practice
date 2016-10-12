@@ -2,8 +2,12 @@ package com.luozi.dao;
 
 import com.luozi.entity.AbstractEntity;
 import com.luozi.entity.BaseEntity;
+import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import java.io.PushbackInputStream;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
@@ -15,11 +19,20 @@ public abstract class AbstractHibernateDao<T extends AbstractEntity, ID extends 
     // 泛型反射类
     private Class<T> entityClass;
 
+    @Resource(name = "sessionFactory")
+    private SessionFactory sessionFactory;
+
     // 通过反射获取子类确定的泛型类
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public AbstractHibernateDao() {
         this.entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
+
+    @PostConstruct
+    public final void init() {
+        setSessionFactory(this.sessionFactory);
+    }
+
 
     @SuppressWarnings("unchecked")
     public ID save(T t){

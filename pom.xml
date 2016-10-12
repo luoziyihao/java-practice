@@ -222,6 +222,31 @@
 
     <dependencies>
 
+        <!--  日志  -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+        <!--  配置所有依赖库的日志依赖,项目中写日志不用 start -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+
         <!-- 测试相关jar包 -->
         <dependency>
             <groupId>junit</groupId>
@@ -786,6 +811,13 @@
 
         <netty.version>5.0.0.Alpha2</netty.version>
         <lombok.version>1.16.10</lombok.version>
+
+
+        <!-- own -->
+        <logback-classic.version>1.1.7</logback-classic.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <log4j.version>1.2.17</log4j.version>
+        <mysql-connector-java.version>6.0.4</mysql-connector-java.version>
     </properties>
 
 </project>
