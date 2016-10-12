@@ -3,5 +3,6 @@
 target/
 rebel.xml
 /src
+.rebel.*
 
 
