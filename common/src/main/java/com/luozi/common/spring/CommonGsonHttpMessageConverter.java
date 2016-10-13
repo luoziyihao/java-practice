@@ -10,7 +10,6 @@ public class CommonGsonHttpMessageConverter extends GsonHttpMessageConverter {
 
 
     public CommonGsonHttpMessageConverter(){
-        super();
         //更换Gson转换器
         super.setGson(new GsonBuilder()
                 .serializeNulls()		//null值属性也需要序列化
