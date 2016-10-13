@@ -82,4 +82,8 @@
         <location>/WEB-INF/static/html/index.html</location>
     </error-page>
 
+    <!-- 首页处理, 如果使用 springmvc / 需要在 spring-mvc 中绑定对应的静态资源 -->
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/static/html/index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
