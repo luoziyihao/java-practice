@@ -63,23 +63,23 @@
     <!-- 错误页面映射 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/static/index.html</location>
+        <location>/WEB-INF/static/html/index.html</location>
     </error-page>
     <error-page>
         <error-code>400</error-code>
-        <location>/WEB-INF/static/index.html</location>
+        <location>/WEB-INF/static/html/index.html</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/WEB-INF/static/index.html</location>
+        <location>/WEB-INF/static/html/index.html</location>
     </error-page>
     <error-page>
         <error-code>503</error-code>
-        <location>/WEB-INF/static/index.html</location>
+        <location>/WEB-INF/static/html/index.html</location>
     </error-page>
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
-        <location>/WEB-INF/static/index.html</location>
+        <location>/WEB-INF/static/html/index.html</location>
     </error-page>
 
 </web-app>

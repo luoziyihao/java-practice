@@ -24,7 +24,17 @@
         <!--</property>-->
     </bean>
 
-    <!-- 静态资源映射 -->
-    <mvc:resources mapping="/*.html" location="/WEB-INF/static/"/>
-    <!-- 不使用视图, 使用纯 webapp -->
+    <!-- 首页转发 -->
+    <mvc:view-controller path="/" view-name="redirect:/static/html/index.html"/>
+    <!-- 当在web.xml 中   DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- WEB-INF 是根目录 -->
+    <!-- 只暴露 html 目录下的静态资源, js, css 等等不暴露 -->
+    <!--静态资源映射 以 /static/html/ 打头, 但是优先级低于 /static/html/{} -->
+    <!-- 会把满足匹配的 ** 的部分匹配到 location 目录之后 -->
+    <!-- 如 /static/html/index.html 到 /WEB-INF/static/html/index.html-->
+    <mvc:resources mapping="/static/html/**" location="/WEB-INF/static/html/" /> <!-- 应用内直接转发使用  -->
+    <mvc:resources mapping="/WEB-INF/static/html/**" location="/WEB-INF/static/html/"/>    <!-- web.xml错误重定向使用 -->
+
 </beans>
