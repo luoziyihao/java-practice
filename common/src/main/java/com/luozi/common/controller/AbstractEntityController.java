@@ -25,13 +25,11 @@ public abstract class AbstractEntityController <M extends AbstractEntity, ID ext
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Response findOne(@PathVariable(value = "id") ID id){
         return new Response().success(getAbstractEntityService().findOne(id));
-//        return new Response().success("hahahas");
-//        return new Response().failure();
     }
 
-    @ResponseBody
+    /* 请求不采用 requestBody, 方便调试 */
     @RequestMapping(method = RequestMethod.POST)
-    public Response save(@RequestBody M m){
+    public Response save(M m){
         return new Response().success(getAbstractEntityService().save(m));
     }
 }
