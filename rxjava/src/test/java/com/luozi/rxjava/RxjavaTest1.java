@@ -1,5 +1,7 @@
 package com.luozi.rxjava;
 
+import org.eclipse.jetty.util.ajax.JSON;
+import org.eclipse.jetty.util.ajax.JSONObjectConvertor;
 import org.junit.Test;
 import rx.Observable;
 import rx.Subscriber;
@@ -9,7 +11,7 @@ import rx.functions.Func1;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.luozi.log.LogUtils.info;
+import static javafx.scene.input.KeyCode.F;
 
 
 /**
@@ -49,6 +51,10 @@ public class RxjavaTest1 {
         observable.subscribe(subscriber);
     }
 
+    private void info(String s) {
+        System.out.println(s);
+    }
+
     @Test
     public void test2() {
         Observable<String> observable = Observable.just("Hello, world", "i am test str2 ");
@@ -77,6 +83,46 @@ public class RxjavaTest1 {
                             info(str);
                         }
                         return strings.size();
+                    }
+                });
+    }
+
+    @Test
+    public void test4() {
+       Observable.from(Arrays.asList("Hello, world", "i am test str2 "))
+               .map(new Func1<String, String>() {
+                   @Override
+                   public String call(String s) {
+                       return s;
+                   }
+               })
+               .flatMap(new Func1<String, Observable<String>>() {
+                   @Override
+                   public Observable<String> call(String s) {
+                       return Observable.just(s + "___1", s + "___2", s + "___3");
+                   }
+               })
+                .map(new Func1<String, String>() {      // map and func1 to create new data
+                    @Override
+                    public String call(String string) {
+                        return string + " | " + String.valueOf(string.hashCode());
+                    }
+                })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        info(s);
+                    }
+                });
+    }
+
+    @Test
+    public void test5() {
+        Observable.range(0,5)
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        System.out.println(integer);
                     }
                 });
     }
