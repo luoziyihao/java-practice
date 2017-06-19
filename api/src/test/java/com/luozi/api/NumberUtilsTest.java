@@ -30,6 +30,7 @@ public class NumberUtilsTest {
         Assert.assertEquals("二十一亿零三百万零三百零一", NumberUtils.numberToVoice(2103000301));
         Assert.assertEquals("二十一亿零三百零一", NumberUtils.numberToVoice(2100000301));
         Assert.assertEquals("二十一亿零三百", NumberUtils.numberToVoice(2100000300));
+        Assert.assertEquals("二十一亿", NumberUtils.numberToVoice(2100000000));
         Assert.assertEquals("一百零一", NumberUtils.numberToVoice(101));
 
     }

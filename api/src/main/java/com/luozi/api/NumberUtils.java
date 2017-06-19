@@ -10,14 +10,14 @@ import java.util.Objects;
  */
 public class NumberUtils {
 
-    private static final Map<Integer, String> bignumberVoiceMap = ImmutableMap.<Integer, String>builder()
+    private static final Map<Integer, String> BIGNUMBER_VOICE_MAP = ImmutableMap.<Integer, String>builder()
             .putAll(ImmutableMap.of(
                     100000000, "亿"
                     , 10000, "万"
             ))
             .build();
 
-    private static final Map<Integer, String> numberVoiceMap = ImmutableMap.<Integer, String>builder()
+    private static final Map<Integer, String> NUMBER_VOICE_MAP = ImmutableMap.<Integer, String>builder()
             .putAll(ImmutableMap.of(
                     1000, "千"
                     , 100, "百"
@@ -26,7 +26,7 @@ public class NumberUtils {
             ))
             .build();
 
-    private static final Map<Integer, String> numberMap = ImmutableMap.<Integer, String>builder()
+    private static final Map<Integer, String> NUMBER_MAP = ImmutableMap.<Integer, String>builder()
             .putAll(ImmutableMap.of(
                     0, "零"
                     , 1, "一"
@@ -54,7 +54,7 @@ public class NumberUtils {
     public static String numberToVoice(int num) {
         StringBuilder builder = new StringBuilder();
 
-        for (Map.Entry<Integer, String> entry : bignumberVoiceMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : BIGNUMBER_VOICE_MAP.entrySet()) {
             int count = num / entry.getKey();
             num = num % entry.getKey();
             if (count > 0) {
@@ -66,14 +66,15 @@ public class NumberUtils {
 
         builder.append(processForFourBit(num));
         CheckAndRemoveSpareFirstZero(builder);
+        CheckAndRemoveSpareLastZero(builder);
         return builder.toString();
     }
 
     private static void CheckAndRemoveSpareFirstZero(StringBuilder builder) {
         int length = builder.length();
-        while (length > 1 && getFirstChar(builder).equals(numberMap.get(zero))) {
+        while (length > 1 && getFirstChar(builder).equals(NUMBER_MAP.get(zero))) {
             length = builder.length();
-            if (Objects.equals(getFirstChar(builder), numberMap.get(zero)) && length > 1) {
+            if (Objects.equals(getFirstChar(builder), NUMBER_MAP.get(zero)) && length > 1) {
                 builder.deleteCharAt(zero);
             }
         }
@@ -83,33 +84,33 @@ public class NumberUtils {
     private static StringBuilder processForFourBit(int num) {
         StringBuilder builder = new StringBuilder();
         if (num < 1000) {
-            builder.append(numberMap.get(zero));
+            builder.append(NUMBER_MAP.get(zero));
         }
         if (num >= high) {
             throw new IllegalStateException("this method did't support number greater then " + high);
         }
-        for (Map.Entry<Integer, String> entry : numberVoiceMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : NUMBER_VOICE_MAP.entrySet()) {
             int count = num / entry.getKey();
             if (count >= 1) {
-                builder.append(numberMap.get(count))
+                builder.append(NUMBER_MAP.get(count))
                         .append(entry.getValue());
             } else if (checkIsAppendZero(builder, entry)) {
-                builder.append(numberMap.get(count));
+                builder.append(NUMBER_MAP.get(count));
             }
             num = num % entry.getKey();
 
         }
-        CheckAndRemoveSpareZero(builder);
+        CheckAndRemoveSpareLastZero(builder);
         return builder;
     }
 
     private static final int zero = 0;
 
-    private static void CheckAndRemoveSpareZero(StringBuilder builder) {
+    private static void CheckAndRemoveSpareLastZero(StringBuilder builder) {
         int length = builder.length();
-        while (length > 1 && getLastChar(builder).equals(numberMap.get(zero))) {
+        while (length > 1 && getLastChar(builder).equals(NUMBER_MAP.get(zero))) {
             length = builder.length();
-            if (Objects.equals(getLastChar(builder), numberMap.get(zero)) && length > 1) {
+            if (Objects.equals(getLastChar(builder), NUMBER_MAP.get(zero)) && length > 1) {
                 builder.deleteCharAt(length - 1);
             }
         }
@@ -135,7 +136,7 @@ public class NumberUtils {
 
     private static boolean checkIsAppendZero(StringBuilder builder, Map.Entry<Integer, String> entry) {
         int length = builder.length();
-        return (length >= 1 && !Objects.equals(getLastChar(builder), numberMap.get(zero)))
+        return (length >= 1 && !Objects.equals(getLastChar(builder), NUMBER_MAP.get(zero)))
                 || entry.getKey() == 1;
     }
 
