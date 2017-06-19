@@ -43,10 +43,10 @@ public class NumberUtils {
             ))
             .build();
 
-    private static final int high = 10000;
+    private static final int HIGH = 10000;
 
     /**
-     * 整数转读音 只支持到万位
+     * 整数转读音
      *
      * @param num
      * @return
@@ -58,7 +58,7 @@ public class NumberUtils {
             int count = num / entry.getKey();
             num = num % entry.getKey();
             if (count > 0) {
-                builder.append(processForFourBit(count))
+                builder.append(processForFourBit(count))    // 数字按照四位分组处理
                         .append(entry.getValue());
             }
 
@@ -81,15 +81,16 @@ public class NumberUtils {
 
     }
 
+    private static final int ZERO_CHECK_NUMBER = 1000;
     private static StringBuilder processForFourBit(int num) {
         StringBuilder builder = new StringBuilder();
-        if (num < 1000) {
+        if (num < ZERO_CHECK_NUMBER) {  // 是否需要在第一位添零
             builder.append(NUMBER_MAP.get(zero));
         }
-        if (num >= high) {
-            throw new IllegalStateException("this method did't support number greater then " + high);
+        if (num >= HIGH) {
+            throw new IllegalStateException("this method did't support number greater then " + HIGH);
         }
-        for (Map.Entry<Integer, String> entry : NUMBER_VOICE_MAP.entrySet()) {
+        for (Map.Entry<Integer, String> entry : NUMBER_VOICE_MAP.entrySet()) {  // 拿到每一位的数 和 值
             int count = num / entry.getKey();
             if (count >= 1) {
                 builder.append(NUMBER_MAP.get(count))
