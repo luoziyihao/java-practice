@@ -23,6 +23,7 @@
 		<module>../json</module>
 		<module>../spring-hibernate-druid</module>
 		<module>../nio</module>
+		<module>../api</module>
 		<module>../empty-model</module>
     </modules>
 
