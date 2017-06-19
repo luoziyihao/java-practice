@@ -25,6 +25,13 @@ public class NumberUtilsTest {
         Assert.assertEquals("一百", NumberUtils.numberToVoice(100));
         Assert.assertEquals("一百零一", NumberUtils.numberToVoice(101));
 
+
+        Assert.assertEquals("一亿零三百万零三百零一", NumberUtils.numberToVoice(103000301));
+        Assert.assertEquals("二十一亿零三百万零三百零一", NumberUtils.numberToVoice(2103000301));
+        Assert.assertEquals("二十一亿零三百零一", NumberUtils.numberToVoice(2100000301));
+        Assert.assertEquals("二十一亿零三百", NumberUtils.numberToVoice(2100000300));
+        Assert.assertEquals("一百零一", NumberUtils.numberToVoice(101));
+
     }
 
 }
