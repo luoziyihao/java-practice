@@ -22,6 +22,7 @@
         <module>../spring-data-jpa</module>
 		<module>../json</module>
 		<module>../spring-hibernate-druid</module>
+		<module>../nio</module>
 		<module>../empty-model</module>
     </modules>
 
