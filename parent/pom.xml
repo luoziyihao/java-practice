@@ -24,6 +24,7 @@
 		<module>../spring-hibernate-druid</module>
 		<module>../nio</module>
 		<module>../api</module>
+		<module>../misc</module>
 		<module>../empty-model</module>
     </modules>
 
