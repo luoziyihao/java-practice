@@ -11,6 +11,7 @@ public class StringReverser {
     /**
      * 使用字节数组的处理方式
      * 先尝试理出大致思路, 找一个方向
+     * 在构思算法的关键点, 可以划出来
      * 再边写边想
      */
     public String reverseStringBySplitChar(String src, char split){
