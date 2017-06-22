@@ -1,15 +1,14 @@
-package com.luozi.api;
+package com.luozi.string;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by luoziyihao on 6/19/17.
  */
-public class NumberUtils {
+public class NumberTransfer {
 
     private static final char NUMBER_PLACEHOLDER = '#';
     private static final String NUMBER_PLACEHOLDER_STRING = "#";
