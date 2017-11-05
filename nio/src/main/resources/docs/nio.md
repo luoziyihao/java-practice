@@ -12,7 +12,7 @@ nio使用内存映射文件的方式来处理输入输出, nio直接把文件的
 
 ## buffer 数据块
 
-相比较io引入的间接层, 支持文件的批量读
+相比较io引入的间接层, 支持文件块的批量读
 
 ByteBuffer  与  DirectByteBuf
 
