@@ -1,0 +1,15 @@
+// 20170803160705
+// http://dev.ims.qunarman.com:8888/ims/sale/rs/hotel/expire_7d.json
+
+{
+  "ver": "1.0",
+  "ret": true,
+  "errmsg": null,
+  "errcode": 0,
+  "data": {
+    "name": "ddd",
+    "enName": "ww",
+    "hotelSeq": "enname",
+    "hotelArea": "北京"
+  }
+}

@@ -4,5 +4,7 @@ target/
 rebel.xml
 /src
 .rebel.*
-
+test.json
+tmp.*
+*.tmp
 
